@@ -58,6 +58,7 @@ def vai_trabalhador():# walk from the start of the island till the laborers
             time.sleep(2)
             click(1578, 0)
             break
+        
         else:
             time.sleep(1)
 
