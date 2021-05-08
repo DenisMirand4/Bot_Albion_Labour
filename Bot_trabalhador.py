@@ -8,7 +8,7 @@ from pynput.keyboard import Key, Controller
 
 
 
-def click(x,y,andar):#single click  
+def click(x,y,andar):#single click, u can swich andar to do a right or left click 
     if(andar):
         win32api.SetCursorPos((x,y))
         win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN,0,0)
@@ -22,68 +22,52 @@ def click(x,y,andar):#single click
 
 
 def click_arrasta(x,y,a,b):#this simulate a click with shift or alt in game, basically the mouse teleport from (x,y) to (a,b)
+    win32api.SetCursorPos((x,y))
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
     time.sleep(0.02)
     win32api.SetCursorPos((a,b))
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
     time.sleep(0.01)
 
+def vai_trabalhador():# walk from the start of the island till the laborers
 
-def volta_trabalhador():
-    for x in range(10):
+    while(True):
         time.sleep(1)
-        if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha.png', confidence=0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha Dia.png', confidence=0.45) != None:
-            time.sleep(2)
-            click(0, 1028)
+        click(1622, 0, True)
+        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha.png', confidence = 0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha Dia.png', confidence = 0.5) != None :
+            time.sleep(0.3)
+            click(1020, 402, False)
             break
-        else:
-            time.sleep(1)
 
-    for x in range(10):
+def volta_trabalhador():#walk from the end of the island till the Travel Planer
+    
+    while(True): 
         time.sleep(1)
-        if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Lamparina.png', confidence=0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Lamparina Dia.png', confidence=0.5) != None:
-            time.sleep(2)
-            click(0, 1069)
-            break
-        else:
+        click(32, 1079, True)
+        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5) != None :
             time.sleep(1)
-
-    for x in range(10):
-        time.sleep(1)
-        if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Runa_volta.png', confidence=0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Runa_volta Dia.png', confidence=0.5) != None:
-            time.sleep(2)
-            click(235,1049)
+            click(1082, 264, False)
             break
-        else:
-            time.sleep(1)
-
-    for x in range(10):
-        time.sleep(1)
-        if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Lanterna.png', confidence=0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Lanterna Noite.png', confidence=0.5)  != None:
-            time.sleep(2)
-            click(358, 762)
-            break
-        else:
-            time.sleep(1)
+    
 
 def coloca_diario():
     for x in range(4):
         time.sleep(0.2)
         if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Take All.png', confidence=0.8) != None:
-            click(216, 861)#colhe recursos
+            click(216, 861)#colect the resources from labours
             break
         else:
             if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Deixar Diario.png', confidence=0.8) != None:
-                break # caso nao tenha recurso
+                break #if there is no resorce to colect but the labour is ready to work
             else:
                 if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Esta trabalho.png', confidence=0.8) != None:
-                    return # caso ainda esteja trabalhando
+                    return #labor is still working
                 else:
                     if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Roda_dos_ventos.png', confidence=0.8) != None: 
                         click(1858, 0)
                         time.sleep(3)
                         deu_merda()
-                        return #caso nao ache o trabalhador
+                        return #didn't click in the labour(security scape)
                     else:
                         time.sleep(0.3)
 
@@ -91,7 +75,7 @@ def coloca_diario():
         time.sleep(0.2)
         if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Deixar Diario.png', confidence=0.8) != None:
             time.sleep(0.2)
-            click_arrasta(1585, 548, 207, 659)#coloca o diário
+            click_arrasta(1585, 548, 207, 659)#put the journal in the labour
             time.sleep(0.2)
             break
         else:
@@ -100,23 +84,24 @@ def coloca_diario():
     for x in range(4):
         time.sleep(0.2)
         if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Aceitar.png', confidence=0.8) != None:
-            click(121, 866)#confirma o diário
+            click(121, 866)#after the journal is put in the labour this funcion click to confirm the journal and start the work
             time.sleep(0.3)
             break
         else:
             time.sleep(0.5)
 
-def viaja_prox(numero_ilha):
-    for x in range(10):
+def viaja_prox(numero_ilha):#type the name of the island u want to travel
+                            ##If u want to use u need to change the name of the islands to match with your own islands
+    for x in range(10):     ###Notice the number of 'numero_ilha' plus one in each island
         time.sleep(0.5)
         if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Comprar Viagem.png', confidence=0.8) != None:
-            click(275,291)
+            click(275,291, False)
             pyautogui.write('')
             time.sleep(0.2)
             break
     if(numero_ilha == 1):
-        pyautogui.write('biscoito1')
-        confirma_viagem()
+        pyautogui.write('biscoito1')#U change here and repet if u have more then one island, and so on
+        confirma_viagem()           ##In case u have a different number u just need to add more if's or remove then
     if(numero_ilha == 2):
         pyautogui.write('biscoito 4')
         confirma_viagem()
@@ -477,81 +462,105 @@ def viaja_prox(numero_ilha):
 
 
 def confirma_viagem():
+    #after the viaja_prox island tipe the name of your island this funcion click to travel
     time.sleep(0.3)
-    click(281,318)
+    click(281,318, False)
     time.sleep(0.3)
-    click(305,863)
+    click(305,863, False)
+
+def logout():
+
+    while(True):
+        if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png' , confidence = 0.8) != None:
+            click(956, 644, True )#if u are in the login screen
+            time.sleep(2)
+        if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\No_wifi.png' , confidence = 0.8) != None:
+            click(960, 547, True)#if u are stil ofline, the bot will keep tring to conect
+            time.sleep(2)
+
+        if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\C_S.png', confidence = 0.8) != None:
+            click(948, 864, True)#if the bot have sucess and pass the login screen, he will log in your charater
+            time.sleep(2)
+            break
 
 def deu_merda():
-   time.sleep(0.2)
-
+    #if anything go out of the normal this funcion is the responsible to help
+    while(True):
+        if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png', confidence = 0.8) != None:
+            logout()
+        else:        
+            click(32, 1079, True)
+            if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5)  != None :
+                time.sleep(1)
+                click(1082, 264, False)
+                break
 
 def faz_trabalhador():
-
+    #click in each labour and put the journals into it
     for x in range(10):
         if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha.png', confidence=0.6) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha Dia.png', confidence=0.6) != None:
             time.sleep(0.5)
-            click(1020, 402)#1 trabalhador
+            click(1020, 402, False)#1 labour
             time.sleep(0.2)
             coloca_diario()
 
-            click(1026, 551)#2 trabalhador
+            click(1026, 551, False)#2 labour
             time.sleep(0.2)
             coloca_diario()
 
-            click(898, 427)#3 trabalhador
+            click(898, 427, False)#3 labour
             time.sleep(0.2)
             coloca_diario()
 
-            click(925, 645)#4 trabalhador
+            click(925, 645, False)#4 labour
             time.sleep(0.2)
             coloca_diario()
 
-            click(817, 499)#5 trabalhador
+            click(817, 499, False)#5 labour
             time.sleep(0.2)
             coloca_diario()
 
-            click(833, 692)#6 trabalhador
+            click(833, 692, False)#6 labour
             time.sleep(0.2)
             coloca_diario()
 
-            click(779, 509)#7 trabalhador
+            click(779, 509, False)#7 labour
             time.sleep(0.2)
             coloca_diario()
 
-            click(787, 722)#8 trabalhador
+            click(787, 722, False)#8 labour
             time.sleep(0.2)
             coloca_diario()
 
-            click(772, 511)#9 trabalhador
+            click(772, 511, False)#9 labour
             time.sleep(0.2)
             coloca_diario()
 
-            click(793, 717)#10 trabalhador
+            click(793, 717, False)#10 labour
             time.sleep(0.2)
             coloca_diario()
 
-            click(784, 521)#11 trabalhador
+            click(784, 521, False)#11 labour
             time.sleep(0.2)
             coloca_diario()
 
-            click(789, 719)#12 trabalhador
+            click(789, 719, False)#12 labour
             time.sleep(0.2)
             coloca_diario()
 
-            click(772, 513)#13 trabalhador
+            click(772, 513, False)#13 labour
             time.sleep(0.2)
             coloca_diario()
 
-            click(783, 708)#14 trabalhador
+            click(783, 708, False)#14 labour
             time.sleep(0.2)
             coloca_diario()
 
-            click(764, 524)#15 trabalhador
+            click(764, 524, False)#15 labour
             time.sleep(0.2)
             coloca_diario()
 
-            click(1858, 0)
+            click(1858, 0, True)#go back to where he started
             time.sleep(2)
             break
 
@@ -559,15 +568,17 @@ def faz_trabalhador():
             time.sleep(0.4)
 
 def troca_imb_p_flec():
-    click(1543,22)
+    #personal personalization, just change the item in the second slot of inventory to the first
+    click(1543, 22, False)
     time.sleep(0.2)
     click_arrasta(1666,548,1588,548)
     time.sleep(0.2)
     
 def troca_flec_p_ferr():
-    click(1543,22)
+    #personal personalization, just change the item in the third slot of inventory to the first
+    click(1543, 22, False)
     time.sleep(0.2)
-    click_arrasta(1749,548,1588,548)
+    click_arrasta(1749, 548, 1588, 548)
     time.sleep(0.2)
 
 numero_ilha = int(input('Número da ilha: '))
@@ -590,6 +601,5 @@ for x in range(1, 121):
     if (numero_ilha == 81):
         troca_flec_p_ferr()
     else:
-        continue'''
-
+        continue
 
