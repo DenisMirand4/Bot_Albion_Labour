@@ -8,11 +8,18 @@ from pynput.keyboard import Key, Controller
 
 
 
-def click(x,y):#single click
-    win32api.SetCursorPos((x,y))
-    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
-    time.sleep(0.01)
-    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
+def click(x,y,andar):#single click
+    if(andar):
+        win32api.SetCursorPos((x,y))
+        win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN,0,0)
+        time.sleep(0.01)
+        win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP,0,0)
+    else:
+        win32api.SetCursorPos((x,y))
+        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
+        time.sleep(0.01)
+        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
+
 
 def click_arrasta(x,y,a,b):#this simulate a click with shift or alt in game, basically the mouse teleport from (x,y) to (a,b)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
@@ -157,370 +164,369 @@ def viaja_prox(numero_ilha):
             pyautogui.write('')
             time.sleep(0.2)
             break
-        [0,1,2,3,4,5]
     if(numero_ilha == 1):
         pyautogui.write('biscoito1')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 2):
         pyautogui.write('biscoito 4')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 3):
         pyautogui.write('biscoito 7')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 4):
         pyautogui.write('biscoito 10')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 5):
         pyautogui.write('biscoito 13')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 6):
         pyautogui.write('biscoito 16')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 7):
         pyautogui.write('biscoito 19')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 8):
         pyautogui.write('bolacha 01')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 9):
         pyautogui.write('bolacha 04')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 10):
         pyautogui.write('bolacha 07')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 11):
         pyautogui.write('bolacha 10')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 12):
         pyautogui.write('bolacha 13')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 13):
         pyautogui.write('bolacha 16')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 14):
         pyautogui.write('bolacha 19')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 15):
         pyautogui.write('polvilho 01')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 16):
         pyautogui.write('polvilho 04')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 17):
         pyautogui.write('polvilho 07')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 18):
         pyautogui.write('polvilho 10')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 19):
         pyautogui.write('polvilho 13')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 20):
         pyautogui.write('polvilho 16')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 21):
         pyautogui.write('polvilho 19')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 22):
         pyautogui.write('cookie 01')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 23):
         pyautogui.write('cookie 04')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 24):
         pyautogui.write('cookie 07')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 25):
         pyautogui.write('cookie 10')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 26):
         pyautogui.write('cookie 13')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 27):
         pyautogui.write('cookie 16')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 28):
         pyautogui.write('cookie 19')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 29):
         pyautogui.write('rosca 01')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 30):
         pyautogui.write('rosca 04')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 31):
         pyautogui.write('rosca 07')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 32):
         pyautogui.write('rosca 10')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 33):
         pyautogui.write('rosca 13')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 34):
         pyautogui.write('rosca 16')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 35):
         pyautogui.write('rosca 19')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha == 36):
         pyautogui.write('bolo 01')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==37):
         pyautogui.write('bolo 04')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==38):
         pyautogui.write('bolo 07')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==39):
         pyautogui.write('bolo 10')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==40):
         pyautogui.write('bolo 13')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==41):
         pyautogui.write('biscoito2')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==42):
         pyautogui.write('biscoito 5')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==43):
         pyautogui.write('biscoito 8')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==44):
         pyautogui.write('biscoito 11')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==45):
         pyautogui.write('biscoito 14')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==46):
         pyautogui.write('biscoito 17')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==47):
         pyautogui.write('biscoito 20')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==48):
         pyautogui.write('bolacha 02')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==49):
         pyautogui.write('bolacha 05')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==50):
         pyautogui.write('bolacha 08')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==51):
         pyautogui.write('bolacha 11')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==52):
         pyautogui.write('bolacha 14')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==53):
         pyautogui.write('bolacha 17')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==54):
         pyautogui.write('bolacha 20')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==55):
         pyautogui.write('polvilho 02')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==56):
         pyautogui.write('polvilho 05')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==57):
         pyautogui.write('polvilho 08')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==58):
         pyautogui.write('polvilho 11')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==59):
         pyautogui.write('polvilho 14')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==60):
         pyautogui.write('polvilho 17')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==61):
         pyautogui.write('polvilho 20')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==62):
         pyautogui.write('cookie 02')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==63):
         pyautogui.write('cookie 05')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==64):
         pyautogui.write('cookie 08')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==65):
         pyautogui.write('cookie 11')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==66):
         pyautogui.write('cookie 14')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==67):
         pyautogui.write('cookie 17')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==68):
         pyautogui.write('cookie 20')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==69):
         pyautogui.write('rosca 02')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==70):
         pyautogui.write('rosca 05')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==71):
         pyautogui.write('rosca 08')
-        confirma_viajem()    
+        confirma_viagem()    
     if(numero_ilha==72):
         pyautogui.write('rosca 11')
-        confirma_viajem()    
+        confirma_viagem()    
     if(numero_ilha==73):
         pyautogui.write('rosca 14')
-        confirma_viajem()    
+        confirma_viagem()    
     if(numero_ilha==74):
         pyautogui.write('rosca 17')
-        confirma_viajem()    
+        confirma_viagem()    
     if(numero_ilha==75):
         pyautogui.write('rosca 20')
-        confirma_viajem()    
+        confirma_viagem()    
     if(numero_ilha==76):
         pyautogui.write('bolo 02')
-        confirma_viajem()    
+        confirma_viagem()    
     if(numero_ilha==77):
         pyautogui.write('bolo 05')
-        confirma_viajem()    
+        confirma_viagem()    
     if(numero_ilha==78):
         pyautogui.write('bolo 08')
-        confirma_viajem()    
+        confirma_viagem()    
     if(numero_ilha==79):
         pyautogui.write('bolo 11')
-        confirma_viajem()    
+        confirma_viagem()    
     if(numero_ilha==80):
         pyautogui.write('bolo 14')
-        confirma_viajem()   
+        confirma_viagem()   
     if(numero_ilha==81):
         pyautogui.write('biscoito3')
-        confirma_viajem()    
+        confirma_viagem()    
     if(numero_ilha==82):
         pyautogui.write('biscoito 6')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==83):
         pyautogui.write('biscoito 9')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==84):
         pyautogui.write('biscoito 12')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==85):
         pyautogui.write('biscoito 15')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==86):
         pyautogui.write('biscoito 18')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==87):
         pyautogui.write('biscoito 21')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==88):
         pyautogui.write('bolacha 03')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==89):
         pyautogui.write('bolacha 06')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==90):
         pyautogui.write('bolacha 09')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==91):
         pyautogui.write('bolacha 12')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==92):
         pyautogui.write('bolacha 15')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==93):
         pyautogui.write('bolacha 18')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==94):
         pyautogui.write('bolacha 21')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==95):
         pyautogui.write('polvilho 03')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==96):
         pyautogui.write('polvilho 06')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==97):
         pyautogui.write('polvilho 09')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==98):
         pyautogui.write('polvilho 12')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==99):
         pyautogui.write('polvilho 15')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==100):
         pyautogui.write('polvilho 18')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==101):
         pyautogui.write('polvilho 21')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==102):
         pyautogui.write('cookie 03')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==103):
         pyautogui.write('cookie 06')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==104):
         pyautogui.write('cookie 09')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==105):
         pyautogui.write('cookie 12')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==106):
         pyautogui.write('cookie 15')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==107):
         pyautogui.write('cookie 18')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==108):
         pyautogui.write('cookie 21')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==109):
         pyautogui.write('rosca 03')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==110):
         pyautogui.write('rosca 06')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==111):
         pyautogui.write('rosca 09')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==112):
         pyautogui.write('rosca 12')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==113):
         pyautogui.write('rosca 15')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==114):
         pyautogui.write('rosca 18')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==115):
         pyautogui.write('rosca 21')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==116):
         pyautogui.write('bolo 03')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==117):
         pyautogui.write('bolo 06')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==118):
         pyautogui.write('bolo 09')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==119):
         pyautogui.write('bolo 12')
-        confirma_viajem()
+        confirma_viagem()
     if(numero_ilha==120):
         pyautogui.write('bolo 15')
-        confirma_viajem()
+        confirma_viagem()
 
 
-def confirma_viajem():
+def confirma_viagem():
     time.sleep(0.3)
     click(281,318)
     time.sleep(0.3)
@@ -614,25 +620,26 @@ def troca_flec_p_ferr():
     click_arrasta(1749,548,1588,548)
     time.sleep(0.2)
 
-#numero_ilha = int(input('Número da ilha: '))
+numero_ilha = int(input('Número da ilha: '))
 
-#for x in range(1, 121):    
-   # viaja_prox(numero_ilha)
-    #numero_ilha+=1
-   # time.sleep(3)
-vai_trabalhador()
-   # time.sleep(1)
-   # faz_trabalhador()
-   # time.sleep(1)
-   # volta_trabalhador()
-   # time.sleep(1)
-   # if (numero_ilha == 41):
-   #     troca_imb_p_flec()
-  #  else:
-  #      continue
-  #  if (numero_ilha == 81):
-  #      troca_flec_p_ferr()
-  #  else:
-   #     continue'''
+for x in range(1, 121):    
+    viaja_prox(numero_ilha)
+    numero_ilha+=1
+    time.sleep(3)
+    vai_trabalhador()
+    time.sleep(1)
+    time.sleep(2)
+    faz_trabalhador()
+    time.sleep(1)
+    volta_trabalhador()
+    time.sleep(1)
+    if (numero_ilha == 41):
+        troca_imb_p_flec()
+    else:
+        continue
+    if (numero_ilha == 81):
+        troca_flec_p_ferr()
+    else:
+        continue'''
 
 
