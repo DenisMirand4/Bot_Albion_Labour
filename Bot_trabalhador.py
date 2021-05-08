@@ -8,7 +8,7 @@ from pynput.keyboard import Key, Controller
 
 
 
-def click(x,y,andar):#single click 
+def click(x,y,andar):#single click  
     if(andar):
         win32api.SetCursorPos((x,y))
         win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN,0,0)
