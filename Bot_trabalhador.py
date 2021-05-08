@@ -28,57 +28,6 @@ def click_arrasta(x,y,a,b):#this simulate a click with shift or alt in game, bas
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
     time.sleep(0.01)
 
-def vai_trabalhador():# walk from the start of the island till the laborers
-    
-    for x in range(10):#
-        if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Roda_dos_ventos.png', confidence=0.8) != None:
-               
-                break
-        else:
-            time.sleep(0.5)
-        
-    for x in range(10):
-        time.sleep(1)
-        print('antes locate: \n')
-        print(pyautogui.position())
-        #if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Batata dia.png', confidence=0.45) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Batata.png', confidence=0.45) != None:
-        time.sleep(1)
-        print('antes click')
-        print(pyautogui.position())
-        click(1578, 0)
-        print('depois click')
-        print(pyautogui.position())
-        break
-        #else:
-         #   time.sleep(1)
-
-    for x in range(10):
-        time.sleep(1)
-        if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Runa.png', confidence=0.45) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Runa Dia.png', confidence=0.45) != None:
-            time.sleep(2)
-            click(1578, 0)
-            break
-        
-        else:
-            time.sleep(1)
-
-    for x in range(10):
-        time.sleep(1)
-        if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Pedras.png', confidence=0.45) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Pedras Dia.png', confidence=0.45) != None:
-            time.sleep(2)
-            click(1294, 302)
-            break
-        else:
-            time.sleep(1)
-
-    for x in range(10):
-        time.sleep(1)
-        if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Porta.png', confidence=0.45) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Porta Dia.png', confidence=0.45) != None:
-            time.sleep(2)
-            click(1619, 0)
-            break
-        else:
-            time.sleep(1)
 
 def volta_trabalhador():
     for x in range(10):
