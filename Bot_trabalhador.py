@@ -99,6 +99,9 @@ def viaja_prox(numero_ilha):#type the name of the island u want to travel
             pyautogui.write('')
             time.sleep(0.2)
             break
+    if(numero_ilha == 0):
+        pyautogui.write('Fort Stearling Craft')#Your backup point
+        confirma_viagem()
     if(numero_ilha == 1):
         pyautogui.write('biscoito1')#U change here and repet if u have more then one island, and so on
         confirma_viagem()           ##In case u have a different number u just need to add more if's or remove then
@@ -467,7 +470,7 @@ def confirma_viagem():
     click(281,318, False)
     time.sleep(0.3)
     click(305,863, False)
-
+ 
 def logout():
 
     while(True):
@@ -493,6 +496,8 @@ def deu_merda():
             if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5)  != None :
                 time.sleep(1)
                 click(1082, 264, False)
+                time.sleep(1)
+                viaja_prox(0)#pass the backup island
                 break
 
 def faz_trabalhador():
