@@ -34,23 +34,29 @@ def vai_trabalhador():# walk from the start of the island till the laborers
     while(True):
         time.sleep(1)
         click(1622, 0, True)
+
         if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha.png', confidence = 0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha Dia.png', confidence = 0.5) != None :
             time.sleep(0.3)
             click(1020, 402, False)
             break
+        if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png', confidence = 0.8) != None:
+            deu_merda()
 
 def volta_trabalhador():#walk from the end of the island till the Travel Planer
-    
+
     while(True): 
         time.sleep(1)
         click(32, 1079, True)
+
         if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5) != None :
             time.sleep(1)
             click(1082, 264, False)
             break
+        if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png', confidence = 0.8) != None:
+            deu_merda()
     
 
-def coloca_diario():
+def coloca_diario():#make the task of colect and give the journal to the labour
     for x in range(4):
         time.sleep(0.2)
         if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Take All.png', confidence=0.8) != None:
@@ -464,14 +470,14 @@ def viaja_prox(numero_ilha):#type the name of the island u want to travel
         confirma_viagem()
 
 
-def confirma_viagem():
-    #after the viaja_prox island tipe the name of your island this funcion click to travel
+def confirma_viagem():#after the viaja_prox island tipe the name of your island this funcion click to travel
+    
     time.sleep(0.3)
     click(281,318, False)
     time.sleep(0.3)
     click(305,863, False)
  
-def logout():
+def logout():#try to log back in game
 
     while(True):
         if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png' , confidence = 0.8) != None:
@@ -486,8 +492,8 @@ def logout():
             time.sleep(2)
             break
 
-def deu_merda():
-    #if anything go out of the normal this funcion is the responsible to help
+def deu_merda():#if anything go out of the normal this funcion is the responsible to help
+    
     while(True):
         if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png', confidence = 0.8) != None:
             logout()
@@ -498,10 +504,13 @@ def deu_merda():
                 click(1082, 264, False)
                 time.sleep(1)
                 viaja_prox(0)#pass the backup island
+                if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Roda_dos_ventos.png', confidence = 0.7)  != None :
+                    time.sleep(0.2)
+                    click(1014, 246, False)
                 break
 
-def faz_trabalhador():
-    #click in each labour and put the journals into it
+def faz_trabalhador():#click in each labour and put the journals into it
+    
     for x in range(10):
         if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha.png', confidence=0.6) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha Dia.png', confidence=0.6) != None:
             time.sleep(0.5)
@@ -572,15 +581,15 @@ def faz_trabalhador():
         else:
             time.sleep(0.4)
 
-def troca_imb_p_flec():
-    #personal personalization, just change the item in the second slot of inventory to the first
+def troca_imb_p_flec():#personal personalization, just change the item in the second slot of inventory to the first
+    
     click(1543, 22, False)
     time.sleep(0.2)
     click_arrasta(1666,548,1588,548)
     time.sleep(0.2)
     
-def troca_flec_p_ferr():
-    #personal personalization, just change the item in the third slot of inventory to the first
+def troca_flec_p_ferr():#personal personalization, just change the item in the third slot of inventory to the first
+    
     click(1543, 22, False)
     time.sleep(0.2)
     click_arrasta(1749, 548, 1588, 548)
@@ -590,7 +599,6 @@ numero_ilha = int(input('Número da ilha: '))
 
 for x in range(1, 121):    
     viaja_prox(numero_ilha)
-    numero_ilha+=1
     time.sleep(3)
     vai_trabalhador()
     time.sleep(1)
@@ -599,12 +607,9 @@ for x in range(1, 121):
     time.sleep(1)
     volta_trabalhador()
     time.sleep(1)
+    numero_ilha+=1
     if (numero_ilha == 41):
         troca_imb_p_flec()
-    else:
-        continue
     if (numero_ilha == 81):
         troca_flec_p_ferr()
-    else:
-        continue
-
+    
