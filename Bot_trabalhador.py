@@ -31,7 +31,7 @@ def click_arrasta(x,y,a,b):#this simulate a click with shift or alt in game, bas
 def vai_trabalhador():# walk from the start of the island till the laborers
 
     while(True):
-        time.sleep(1)
+        time.sleep(5)
         click(1622, 0, True)
 
         if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha.png', confidence = 0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha Dia.png', confidence = 0.5) != None :
@@ -48,7 +48,7 @@ def volta_trabalhador():#walk from the end of the island till the Travel Planer
         time.sleep(1)
         click(32, 1079, True)
 
-        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5) != None :
+        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Topo_viajador.png', confidence = 0.5) != None :
             time.sleep(1)
             click(1082, 264, False)
             break
@@ -627,14 +627,15 @@ def troca_flec_p_ferr():#personal personalization, just change the item in the t
     time.sleep(0.2)
 
 numero_ilha = int(input('Número da ilha: '))
-error = False
-for x in range(1, 121):    
+numero_ilha_restante = 120 - numero_ilha #substitute the 120 for the nunber of islands u have
+
+for x in range(1, numero_ilha_restante):# here is where the magic happens 
     viaja_prox(numero_ilha)
     time.sleep(3)
-    error = vai_trabalhador()
-    error = faz_trabalhador()
+    error_vai = vai_trabalhador()
+    error_faz = faz_trabalhador()
 
-    while(error == True):
+    while(error_vai == True or error_faz == True):#in case of any error, like low internet conection
         viaja_prox(numero_ilha)
         time.sleep(3)
         vai_trabalhador()
