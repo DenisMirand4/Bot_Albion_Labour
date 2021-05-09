@@ -20,7 +20,6 @@ def click(x,y,andar):#single click, u can swich andar to do a right or left clic
         time.sleep(0.01)
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
 
-
 def click_arrasta(x,y,a,b):#this simulate a click with shift or alt in game, basically the mouse teleport from (x,y) to (a,b)
     win32api.SetCursorPos((x,y))
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
@@ -41,6 +40,7 @@ def vai_trabalhador():# walk from the start of the island till the laborers
             break
         if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png', confidence = 0.8) != None:
             deu_merda()
+            return True
 
 def volta_trabalhador():#walk from the end of the island till the Travel Planer
 
@@ -54,7 +54,110 @@ def volta_trabalhador():#walk from the end of the island till the Travel Planer
             break
         if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png', confidence = 0.8) != None:
             deu_merda()
+
+def faz_trabalhador():#click in each labour and put the journals into it
     
+    for x in range(8):
+        if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png', confidence = 0.8) != None:
+            deu_merda()
+        if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha.png', confidence=0.6) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha Dia.png', confidence=0.6) != None:
+            time.sleep(0.5)
+            click(1020, 402, False)#1 labour
+            time.sleep(0.2)
+            error = coloca_diario()
+            if(error == True):
+                return True
+
+            click(1026, 551, False)#2 labour
+            time.sleep(0.2)
+            error = coloca_diario()
+            if(error == True):
+                return True
+
+            click(898, 427, False)#3 labour
+            time.sleep(0.2)
+            error = coloca_diario()
+            if(error == True):
+                return True
+
+            click(925, 645, False)#4 labour
+            time.sleep(0.2)
+            error = coloca_diario()
+            if(error == True):
+                return True
+
+            click(817, 499, False)#5 labour
+            time.sleep(0.2)
+            error = coloca_diario()
+            if(error == True):
+                return True
+
+            click(833, 692, False)#6 labour
+            time.sleep(0.2)
+            error = coloca_diario()
+            if(error == True):
+                return True
+
+            click(779, 509, False)#7 labour
+            time.sleep(0.2)
+            error = coloca_diario()
+            if(error == True):
+                return True
+
+            click(787, 722, False)#8 labour
+            time.sleep(0.2)
+            error = coloca_diario()
+            if(error == True):
+                return True
+
+            click(772, 511, False)#9 labour
+            time.sleep(0.2)
+            error = coloca_diario()
+            if(error == True):
+                return True
+
+            click(793, 717, False)#10 labour
+            time.sleep(0.2)
+            error = coloca_diario()
+            if(error == True):
+                return True
+
+            click(784, 521, False)#11 labour
+            time.sleep(0.2)
+            error = coloca_diario()
+            if(error == True):
+                return True
+
+            click(789, 719, False)#12 labour
+            time.sleep(0.2)
+            error = coloca_diario()
+            if(error == True):
+                return True
+
+            click(772, 513, False)#13 labour
+            time.sleep(0.2)
+            error = coloca_diario()
+            if(error == True):
+                return True
+
+            click(783, 708, False)#14 labour
+            time.sleep(0.2)
+            error = coloca_diario()
+            if(error == True):
+                return True
+
+            click(764, 524, False)#15 labour
+            time.sleep(0.2)
+            error = coloca_diario()
+            if(error == True):
+                return True
+
+            click(1858, 0, True)#go back to where he started
+            time.sleep(2)
+            return False
+
+        else:
+            time.sleep(0.5)
 
 def coloca_diario():#make the task of colect and give the journal to the labour
     for x in range(4):
@@ -67,13 +170,13 @@ def coloca_diario():#make the task of colect and give the journal to the labour
                 break #if there is no resorce to colect but the labour is ready to work
             else:
                 if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Esta trabalho.png', confidence=0.8) != None:
-                    return #labor is still working
+                    return False #labor is still working
                 else:
                     if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Roda_dos_ventos.png', confidence=0.8) != None: 
                         click(1858, 0)
                         time.sleep(3)
                         deu_merda()
-                        return #didn't click in the labour(security scape)
+                        return True #didn't click in the labour(security scape)
                     else:
                         time.sleep(0.3)
 
@@ -92,7 +195,7 @@ def coloca_diario():#make the task of colect and give the journal to the labour
         if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Aceitar.png', confidence=0.8) != None:
             click(121, 866)#after the journal is put in the labour this funcion click to confirm the journal and start the work
             time.sleep(0.3)
-            break
+            return False
         else:
             time.sleep(0.5)
 
@@ -469,7 +572,6 @@ def viaja_prox(numero_ilha):#type the name of the island u want to travel
         pyautogui.write('bolo 15')
         confirma_viagem()
 
-
 def confirma_viagem():#after the viaja_prox island tipe the name of your island this funcion click to travel
     
     time.sleep(0.3)
@@ -501,85 +603,14 @@ def deu_merda():#if anything go out of the normal this funcion is the responsibl
             click(32, 1079, True)
             if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5)  != None :
                 time.sleep(1)
-                click(1082, 264, False)
+                click(1049, 253, False)
                 time.sleep(1)
                 viaja_prox(0)#pass the backup island
                 if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Roda_dos_ventos.png', confidence = 0.7)  != None :
                     time.sleep(0.2)
                     click(1014, 246, False)
-                break
-
-def faz_trabalhador():#click in each labour and put the journals into it
-    
-    for x in range(10):
-        if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha.png', confidence=0.6) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha Dia.png', confidence=0.6) != None:
-            time.sleep(0.5)
-            click(1020, 402, False)#1 labour
-            time.sleep(0.2)
-            coloca_diario()
-
-            click(1026, 551, False)#2 labour
-            time.sleep(0.2)
-            coloca_diario()
-
-            click(898, 427, False)#3 labour
-            time.sleep(0.2)
-            coloca_diario()
-
-            click(925, 645, False)#4 labour
-            time.sleep(0.2)
-            coloca_diario()
-
-            click(817, 499, False)#5 labour
-            time.sleep(0.2)
-            coloca_diario()
-
-            click(833, 692, False)#6 labour
-            time.sleep(0.2)
-            coloca_diario()
-
-            click(779, 509, False)#7 labour
-            time.sleep(0.2)
-            coloca_diario()
-
-            click(787, 722, False)#8 labour
-            time.sleep(0.2)
-            coloca_diario()
-
-            click(772, 511, False)#9 labour
-            time.sleep(0.2)
-            coloca_diario()
-
-            click(793, 717, False)#10 labour
-            time.sleep(0.2)
-            coloca_diario()
-
-            click(784, 521, False)#11 labour
-            time.sleep(0.2)
-            coloca_diario()
-
-            click(789, 719, False)#12 labour
-            time.sleep(0.2)
-            coloca_diario()
-
-            click(772, 513, False)#13 labour
-            time.sleep(0.2)
-            coloca_diario()
-
-            click(783, 708, False)#14 labour
-            time.sleep(0.2)
-            coloca_diario()
-
-            click(764, 524, False)#15 labour
-            time.sleep(0.2)
-            coloca_diario()
-
-            click(1858, 0, True)#go back to where he started
-            time.sleep(2)
-            break
-
-        else:
-            time.sleep(0.4)
+                    return
+                    
 
 def troca_imb_p_flec():#personal personalization, just change the item in the second slot of inventory to the first
     
@@ -596,20 +627,29 @@ def troca_flec_p_ferr():#personal personalization, just change the item in the t
     time.sleep(0.2)
 
 numero_ilha = int(input('Número da ilha: '))
-
+error = False
 for x in range(1, 121):    
     viaja_prox(numero_ilha)
     time.sleep(3)
-    vai_trabalhador()
-    time.sleep(1)
-    time.sleep(2)
-    faz_trabalhador()
+    error = vai_trabalhador()
+    error = faz_trabalhador()
+
+    while(error == True):
+        viaja_prox(numero_ilha)
+        time.sleep(3)
+        vai_trabalhador()
+        error = faz_trabalhador()
+
     time.sleep(1)
     volta_trabalhador()
     time.sleep(1)
-    numero_ilha+=1
+    
+    if(error == False):
+        numero_ilha+=1
+
     if (numero_ilha == 41):
         troca_imb_p_flec()
+
     if (numero_ilha == 81):
         troca_flec_p_ferr()
     
