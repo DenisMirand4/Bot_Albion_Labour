@@ -163,7 +163,7 @@ def coloca_diario():#make the task of colect and give the journal to the labour
     for x in range(4):
         time.sleep(0.2)
         if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Take All.png', confidence=0.8) != None:
-            click(216, 861)#colect the resources from labours
+            click(216, 861, False)#colect the resources from labours
             break
         else:
             if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Deixar Diario.png', confidence=0.8) != None:
@@ -173,7 +173,7 @@ def coloca_diario():#make the task of colect and give the journal to the labour
                     return False #labor is still working
                 else:
                     if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Roda_dos_ventos.png', confidence=0.8) != None: 
-                        click(1858, 0)
+                        click(1858, 0, True)
                         time.sleep(3)
                         deu_merda()
                         return True #didn't click in the labour(security scape)
@@ -193,7 +193,7 @@ def coloca_diario():#make the task of colect and give the journal to the labour
     for x in range(4):
         time.sleep(0.2)
         if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Aceitar.png', confidence=0.8) != None:
-            click(121, 866)#after the journal is put in the labour this funcion click to confirm the journal and start the work
+            click(121, 866, False)#after the journal is put in the labour this funcion click to confirm the journal and start the work
             time.sleep(0.3)
             return False
         else:
@@ -643,7 +643,7 @@ for x in range(1, 121):
     time.sleep(1)
     volta_trabalhador()
     time.sleep(1)
-    
+
     if(error == False):
         numero_ilha+=1
 
@@ -652,4 +652,3 @@ for x in range(1, 121):
 
     if (numero_ilha == 81):
         troca_flec_p_ferr()
-    
