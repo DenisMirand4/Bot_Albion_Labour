@@ -30,23 +30,34 @@ def click_arrasta(x,y,a,b):#this simulate a click with shift or alt in game, bas
 
 def vai_trabalhador():# walk from the start of the island till the laborers
 
+    timed_out=0
     while(True):
         time.sleep(5)
         click(1622, 0, True)
+        timed_out+=1
 
         if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha.png', confidence = 0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Tocha Dia.png', confidence = 0.5) != None :
             time.sleep(0.3)
             click(1020, 402, False)
-            break
+            return False
         if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png', confidence = 0.8) != None:
+            deu_merda()
+            return True
+        if (timed_out==10):
             deu_merda()
             return True
 
 def volta_trabalhador():#walk from the end of the island till the Travel Planer
 
+    timed_out=0
     while(True): 
         time.sleep(1)
         click(32, 1079, True)
+        timed_out+=1
+        if(timed_out==25):
+            deu_merda()
+            return True
+            
 
         if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Topo_viajador.png', confidence = 0.5) != None :
             time.sleep(1)
@@ -54,6 +65,7 @@ def volta_trabalhador():#walk from the end of the island till the Travel Planer
             break
         if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png', confidence = 0.8) != None:
             deu_merda()
+            return True
 
 def faz_trabalhador():#click in each labour and put the journals into it
     
@@ -596,12 +608,18 @@ def logout():#try to log back in game
 
 def deu_merda():#if anything go out of the normal this funcion is the responsible to help
     
+    timed_out=0
     while(True):
         if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png', confidence = 0.8) != None:
             logout()
         else:        
             click(32, 1079, True)
-            if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5)  != None :
+            time.sleep(1)
+            timed_out+=1
+            if timed_out==30:
+                click(1009, 500, True)
+
+            if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Topo_viajador.png', confidence = 0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Topo_viajador_noite.png', confidence = 0.5) != None :
                 time.sleep(1)
                 click(1049, 253, False)
                 time.sleep(1)
@@ -610,7 +628,6 @@ def deu_merda():#if anything go out of the normal this funcion is the responsibl
                     time.sleep(0.2)
                     click(1014, 246, False)
                     return
-                    
 
 def troca_imb_p_flec():#personal personalization, just change the item in the second slot of inventory to the first
     
@@ -627,7 +644,8 @@ def troca_flec_p_ferr():#personal personalization, just change the item in the t
     time.sleep(0.2)
 
 numero_ilha = int(input('Número da ilha: '))
-numero_ilha_restante = 120 - numero_ilha #substitute the 120 for the nunber of islands u have
+numero_ilha_total = int(input('Quantas ilhas vc tem: '))
+numero_ilha_restante = numero_ilha_total - numero_ilha 
 
 for x in range(1, numero_ilha_restante):# here is where the magic happens 
     viaja_prox(numero_ilha)
@@ -638,15 +656,15 @@ for x in range(1, numero_ilha_restante):# here is where the magic happens
     while(error_vai == True or error_faz == True):#in case of any error, like low internet conection
         viaja_prox(numero_ilha)
         time.sleep(3)
-        vai_trabalhador()
-        error = faz_trabalhador()
+        error_vai = vai_trabalhador()
+        error_faz = faz_trabalhador()
 
     time.sleep(1)
     volta_trabalhador()
     time.sleep(1)
 
-    if(error == False):
-        numero_ilha+=1
+    if(error_vai == False and error_faz == False):
+    numero_ilha+=1
 
     if (numero_ilha == 41):
         troca_imb_p_flec()
