@@ -67,7 +67,7 @@ def volta_trabalhador():#walk from the end of the island till the Travel Planer
             deu_merda()
             return True
 
-def faz_trabalhador():#click in each labour and put the journals into it
+def faz_trabalhador():#click in each labour and put the journals into it    
     
     for x in range(8):
         if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png', confidence = 0.8) != None:
@@ -172,8 +172,11 @@ def faz_trabalhador():#click in each labour and put the journals into it
             time.sleep(0.5)
 
 def coloca_diario():#make the task of colect and give the journal to the labour
-    for x in range(4):
-        time.sleep(0.2)
+    timed_out = 0
+    while(True):
+        if (timed_out==10):
+            deu_merda()
+            return True
         if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Take All.png', confidence=0.8) != None:
             click(216, 861, False)#colect the resources from labours
             break
@@ -190,26 +193,33 @@ def coloca_diario():#make the task of colect and give the journal to the labour
                         deu_merda()
                         return True #didn't click in the labour(security scape)
                     else:
-                        time.sleep(0.3)
-
-    for x in range(4):
-        time.sleep(0.2)
+                        time.sleep(0.5)
+                        timed_out+=1
+        
+    timed_out = 0
+    while(True):
+        if (timed_out==10):
+            deu_merda()
+            return True
         if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Deixar Diario.png', confidence=0.8) != None:
-            time.sleep(0.2)
             click_arrasta(1585, 548, 207, 659)#put the journal in the labour
-            time.sleep(0.2)
             break
         else:
             time.sleep(0.5)
-
-    for x in range(4):
-        time.sleep(0.2)
+            timed_out+=1
+            
+    timed_out = 0
+    while(True):
+        if (timed_out==10):
+            deu_merda()
+            return True   
         if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Aceitar.png', confidence=0.8) != None:
             click(121, 866, False)#after the journal is put in the labour this funcion click to confirm the journal and start the work
             time.sleep(0.3)
             return False
         else:
             time.sleep(0.5)
+            timed_out+=1
 
 def viaja_prox(numero_ilha):#type the name of the island u want to travel
                             ##If u want to use u need to change the name of the islands to match with your own islands
@@ -645,9 +655,8 @@ def troca_flec_p_ferr():#personal personalization, just change the item in the t
 
 numero_ilha = int(input('Número da ilha: '))
 numero_ilha_total = int(input('Quantas ilhas vc tem: '))
-numero_ilha_restante = numero_ilha_total - numero_ilha 
 
-for x in range(1, numero_ilha_restante):# here is where the magic happens 
+while(True):# here is where the magic happens 
     viaja_prox(numero_ilha)
     time.sleep(3)
     error_vai = vai_trabalhador()
@@ -671,3 +680,5 @@ for x in range(1, numero_ilha_restante):# here is where the magic happens
 
     if (numero_ilha == 81):
         troca_flec_p_ferr()
+    if (numero_ilha==numero_ilha_total+1):
+        break
