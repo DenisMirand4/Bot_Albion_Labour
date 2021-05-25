@@ -1,3 +1,4 @@
+from tkinter.constants import S
 from pyautogui import *
 import pyautogui
 import time
@@ -679,19 +680,26 @@ def viaja_prox(numero_ilha):#type the name of the island u want to travel
     timed_out=0             ##If u want to use u need to change the name of the islands to match with your own islands
     while(True):            ###Notice the number of 'numero_ilha' plus one in each island
         timed_out+=1
+        time.sleep(2)
         if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Comprar Viagem.png', confidence=0.8) != None:
-            click(275,291, False)
-            pyautogui.write('')
-            time.sleep(0.2)
+            click_arrasta(176, 289,228, 291)
+            time.sleep(1)
+            pyautogui.press('backspace')
+            time.sleep(1)
             break
-        if(timed_out==10):
-            deu_merda()
-        time.sleep(0.5)
+        if((timed_out==30)  and (pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viagem_indisponivel.png', confidence=0.8) != None)):
+            pyautogui.press('esc')
+            print('esta no primeiro')
+            time.sleep(2)
+            click(995, 256,False)
+        else:
+            time.sleep(0.1)
+
     if(numero_ilha == -1):
-        pyautogui.write('Fort Stearling Craft')
+        pyautogui.write('Fort Stearling Craft')#onde pega os livros
         confirma_viagem()
     if(numero_ilha == 0):
-        pyautogui.write('Pedra refino')#Your backup point
+        pyautogui.write('Pedra Refino')#Your backup point
         confirma_viagem()
     if(numero_ilha == 1):
         pyautogui.write('biscoito1')#U change here and repet if u have more then one island, and so on
@@ -1053,15 +1061,32 @@ def viaja_prox(numero_ilha):#type the name of the island u want to travel
     if(numero_ilha==120):
         pyautogui.write('bolo 15')
         confirma_viagem()
+    
+    time.sleep(3)
+    timed_out=0
     while(True):
+        
         if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Roda_dos_ventos.png', confidence=0.8) != None:
             return
-
+        if (timed_out==40):
+            print(2)
+            pyautogui.press('esc')
+            print(3)
+            time.sleep(0.3)
+            click(995, 256,False)
+            print(4)
+            time.sleep(1)
+            viaja_prox(numero_ilha)
+            print(5)
+            return
+        else:
+            time.sleep(0.1)
+            
 def confirma_viagem():#after the viaja_prox island tipe the name of your island this funcion click to travel
     
-    time.sleep(0.1)
+    time.sleep(1)
     click(281,318, False)
-    time.sleep(0.1)
+    time.sleep(1)
     click(305,863, False)
  
 def logout():#try to log back in game
@@ -1102,11 +1127,8 @@ def deu_merda():#if anything go out of the normal this funcion is the responsibl
             else:
                 pyautogui.click(a)
                 
-
             time.sleep(1)
-            #click(1049, 253, False)
             viaja_prox(0)#pass the backup island 
-            time.sleep(3)
             if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Ilha_pedra.png', confidence = 0.7)  != None :
                 time.sleep(0.2)
                 click(1014, 246, False)
@@ -1183,8 +1205,7 @@ def guardar_itens(x):
             timed_out+=1
             time.sleep(0.1)
     timed_out=0
-    while(True):
-        
+    while(True): 
         if (pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\inventario.png', confidence = 0.8) != None):
             if (x != 1):
                 time.sleep(0.3)
@@ -1205,6 +1226,7 @@ def guardar_itens(x):
                 break
         elif (pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\banco.png') != None):
             pyautogui.press('esc')
+            print('guardar itens')
             time.sleep(1)
             click(1098, 370, False)
             time.sleep(1)
@@ -1280,13 +1302,13 @@ for x,y in GUI.numero_ilha.items():# here is where the magic happens
 
     if(y==False):
         continue
+
     viaja_prox(x)
     error_vai = vai_trabalhador()
     error_faz = faz_trabalhador()
 
     while(error_vai or error_faz):#in case of any error, like low internet conection
         viaja_prox(x)
-        time.sleep(3)
         error_vai = vai_trabalhador()
         error_faz = faz_trabalhador()
     
