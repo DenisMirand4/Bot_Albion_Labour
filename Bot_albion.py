@@ -8,438 +8,183 @@ import win32api, win32con
 from pynput.keyboard import Key, Controller
 from tkinter import Event
 import PySimpleGUI as sg
-from PySimpleGUI.PySimpleGUI import B, CBox, Check
+from PySimpleGUI.PySimpleGUI import B, Checkbox, Check
 
 
 
 class GUI:
-    def toggle_imb(window,x):#funcion that toggle all the IMBUIDORES
-        if (x==0):
-            window[1].update(False)
-            window[2].update(False)
-            window[3].update(False)
-            window[4].update(False)
-            window[5].update(False)
-            window[6].update(False)
-            window[7].update(False)
-            window[8].update(False)
-            window[9].update(False)
-            window[10].update(False)
-            window[11].update(False)
-            window[12].update(False)
-            window[13].update(False)
-            window[14].update(False)
-            window[15].update(False)
-            window[16].update(False)
-            window[17].update(False)
-            window[18].update(False)
-            window[19].update(False)
-            window[20].update(False)
-            window[21].update(False)
-            window[22].update(False)
-            window[23].update(False)
-            window[24].update(False)
-            window[25].update(False)
-            window[26].update(False)
-            window[27].update(False)
-            window[28].update(False)
-            window[29].update(False)
-            window[30].update(False)
-            window[31].update(False)
-            window[32].update(False)
-            window[33].update(False)
-            window[34].update(False)
-            window[35].update(False)
-            window[36].update(False)
-            window[37].update(False)
-            window[38].update(False)
-            window[39].update(False)
-            window[40].update(False)
-        if(x==1):
-            window[1].update(True)
-            window[2].update(True)
-            window[3].update(True)
-            window[4].update(True)
-            window[5].update(True)
-            window[6].update(True)
-            window[7].update(True)
-            window[8].update(True)
-            window[9].update(True)
-            window[10].update(True)
-            window[11].update(True)
-            window[12].update(True)
-            window[13].update(True)
-            window[14].update(True)
-            window[15].update(True)
-            window[16].update(True)
-            window[17].update(True)
-            window[18].update(True)
-            window[19].update(True)
-            window[20].update(True)
-            window[21].update(True)
-            window[22].update(True)
-            window[23].update(True)
-            window[24].update(True)
-            window[25].update(True)
-            window[26].update(True)
-            window[27].update(True)
-            window[28].update(True)
-            window[29].update(True)
-            window[30].update(True)
-            window[31].update(True)
-            window[32].update(True)
-            window[33].update(True)
-            window[34].update(True)
-            window[35].update(True)
-            window[36].update(True)
-            window[37].update(True)
-            window[38].update(True)
-            window[39].update(True)
-            window[40].update(True)
-
-    def toggle_fle(window,a):#funcion that toggle all the FLECHEIRO
-
-        if(a==0):
-            window[41].update(False)
-            window[42].update(False)
-            window[43].update(False)
-            window[44].update(False)
-            window[45].update(False)
-            window[46].update(False)
-            window[47].update(False)
-            window[48].update(False)
-            window[49].update(False)
-            window[50].update(False)
-            window[51].update(False)
-            window[52].update(False)
-            window[53].update(False)
-            window[54].update(False)
-            window[55].update(False)
-            window[56].update(False)
-            window[57].update(False)
-            window[58].update(False)
-            window[59].update(False)
-            window[60].update(False)
-            window[61].update(False)
-            window[62].update(False)
-            window[63].update(False)
-            window[64].update(False)
-            window[65].update(False)
-            window[66].update(False)
-            window[67].update(False)
-            window[68].update(False)
-            window[69].update(False)
-            window[70].update(False)
-            window[71].update(False)
-            window[72].update(False)
-            window[73].update(False)
-            window[74].update(False)
-            window[75].update(False)
-            window[76].update(False)
-            window[77].update(False)
-            window[78].update(False)
-            window[79].update(False)
-            window[80].update(False)
-        if(a==1):
-            window[41].update(True)
-            window[42].update(True)
-            window[43].update(True)
-            window[44].update(True)
-            window[45].update(True)
-            window[46].update(True)
-            window[47].update(True)
-            window[48].update(True)
-            window[49].update(True)
-            window[50].update(True)
-            window[51].update(True)
-            window[52].update(True)
-            window[53].update(True)
-            window[54].update(True)
-            window[55].update(True)
-            window[56].update(True)
-            window[57].update(True)
-            window[58].update(True)
-            window[59].update(True)
-            window[60].update(True)
-            window[61].update(True)
-            window[62].update(True)
-            window[63].update(True)
-            window[64].update(True)
-            window[65].update(True)
-            window[66].update(True)
-            window[67].update(True)
-            window[68].update(True)
-            window[69].update(True)
-            window[70].update(True)
-            window[71].update(True)
-            window[72].update(True)
-            window[73].update(True)
-            window[74].update(True)
-            window[75].update(True)
-            window[76].update(True)
-            window[77].update(True)
-            window[78].update(True)
-            window[79].update(True)
-            window[80].update(True)
-
-    def toggle_fer(window,k):#funcion that toggle all the FERREIRO
-
-        if(k==0):
-            window[81].update(False)
-            window[82].update(False)
-            window[83].update(False)
-            window[84].update(False)
-            window[85].update(False)
-            window[86].update(False)
-            window[87].update(False)
-            window[88].update(False)
-            window[89].update(False)
-            window[90].update(False)
-            window[91].update(False)
-            window[92].update(False)
-            window[93].update(False)
-            window[94].update(False)
-            window[95].update(False)
-            window[96].update(False)
-            window[97].update(False)
-            window[98].update(False)
-            window[99].update(False)
-            window[100].update(False)
-            window[101].update(False)
-            window[102].update(False)
-            window[103].update(False)
-            window[104].update(False)
-            window[105].update(False)
-            window[106].update(False)
-            window[107].update(False)
-            window[108].update(False)
-            window[109].update(False)
-            window[110].update(False)
-            window[111].update(False)
-            window[112].update(False)
-            window[113].update(False)
-            window[114].update(False)
-            window[115].update(False)
-            window[116].update(False)
-            window[117].update(False)
-            window[118].update(False)
-            window[119].update(False)
-            window[120].update(False)
-        if(k==1):
-            window[81].update(True)
-            window[82].update(True)
-            window[83].update(True)
-            window[84].update(True)
-            window[85].update(True)
-            window[86].update(True)
-            window[87].update(True)
-            window[88].update(True)
-            window[89].update(True)
-            window[90].update(True)
-            window[91].update(True)
-            window[92].update(True)
-            window[93].update(True)
-            window[94].update(True)
-            window[95].update(True)
-            window[96].update(True)
-            window[97].update(True)
-            window[98].update(True)
-            window[99].update(True)
-            window[100].update(True)
-            window[101].update(True)
-            window[102].update(True)
-            window[103].update(True)
-            window[104].update(True)
-            window[105].update(True)
-            window[106].update(True)
-            window[107].update(True)
-            window[108].update(True)
-            window[109].update(True)
-            window[110].update(True)
-            window[111].update(True)
-            window[112].update(True)
-            window[113].update(True)
-            window[114].update(True)
-            window[115].update(True)
-            window[116].update(True)
-            window[117].update(True)
-            window[118].update(True)
-            window[119].update(True)
-            window[120].update(True)
 
     biscoito_imb = [
-        [sg.Text('Biscoito1  '),sg.CBox('',default=True,key=1)],
-        [sg.Text('Biscoito 4 '),sg.CBox('',default=True,key=2)],
-        [sg.Text('Biscoito 7 '),sg.CBox('',default=True,key=3)],
-        [sg.Text('Biscoito 10'),sg.CBox('',default=True,key=4)],
-        [sg.Text('Biscoito 13'),sg.CBox('',default=True,key=5)],
-        [sg.Text('Biscoito 16'),sg.CBox('',default=True,key=6)],
-        [sg.Text('Biscoito 19'),sg.CBox('',default=True,key=7)],]
+        [sg.Text('Biscoito1  '),sg.Checkbox('',default=True,key=1)],
+        [sg.Text('Biscoito 4 '),sg.Checkbox('',default=True,key=2)],
+        [sg.Text('Biscoito 7 '),sg.Checkbox('',default=True,key=3)],
+        [sg.Text('Biscoito 10'),sg.Checkbox('',default=True,key=4)],
+        [sg.Text('Biscoito 13'),sg.Checkbox('',default=True,key=5)],
+        [sg.Text('Biscoito 16'),sg.Checkbox('',default=True,key=6)],
+        [sg.Text('Biscoito 19'),sg.Checkbox('',default=True,key=7)],]
 
     bolacha_imb =[
-        [sg.Text('Bolacha 01'),sg.CBox('',default=True,key=8)],
-        [sg.Text('Bolacha 04'),sg.CBox('',default=True,key=9)],
-        [sg.Text('Bolacha 07'),sg.CBox('',default=True,key=10)],
-        [sg.Text('Bolacha 10'),sg.CBox('',default=True,key=11)],
-        [sg.Text('Bolacha 13'),sg.CBox('',default=True,key=12)],
-        [sg.Text('Bolacha 16'),sg.CBox('',default=True,key=13)],
-        [sg.Text('Bolacha 19'),sg.CBox('',default=True,key=14)],]
+        [sg.Text('Bolacha 01'),sg.Checkbox('',default=True,key=8)],
+        [sg.Text('Bolacha 04'),sg.Checkbox('',default=True,key=9)],
+        [sg.Text('Bolacha 07'),sg.Checkbox('',default=True,key=10)],
+        [sg.Text('Bolacha 10'),sg.Checkbox('',default=True,key=11)],
+        [sg.Text('Bolacha 13'),sg.Checkbox('',default=True,key=12)],
+        [sg.Text('Bolacha 16'),sg.Checkbox('',default=True,key=13)],
+        [sg.Text('Bolacha 19'),sg.Checkbox('',default=True,key=14)],]
 
     polvilho_imb = [
-        [sg.Text('Polvilho 01'),sg.CBox('',default=True,key=15)],
-        [sg.Text('Polvilho 04'),sg.CBox('',default=True,key=16)],
-        [sg.Text('Polvilho 07'),sg.CBox('',default=True,key=17)],
-        [sg.Text('Polvilho 10'),sg.CBox('',default=True,key=18)],
-        [sg.Text('Polvilho 13'),sg.CBox('',default=True,key=19)],
-        [sg.Text('Polvilho 16'),sg.CBox('',default=True,key=20)],
-        [sg.Text('Polvilho 19'),sg.CBox('',default=True,key=21)],]
+        [sg.Text('Polvilho 01'),sg.Checkbox('',default=True,key=15)],
+        [sg.Text('Polvilho 04'),sg.Checkbox('',default=True,key=16)],
+        [sg.Text('Polvilho 07'),sg.Checkbox('',default=True,key=17)],
+        [sg.Text('Polvilho 10'),sg.Checkbox('',default=True,key=18)],
+        [sg.Text('Polvilho 13'),sg.Checkbox('',default=True,key=19)],
+        [sg.Text('Polvilho 16'),sg.Checkbox('',default=True,key=20)],
+        [sg.Text('Polvilho 19'),sg.Checkbox('',default=True,key=21)],]
 
     cookie_imb = [
-        [sg.Text('Cookie 01'),sg.CBox('',default=True,key=22)],
-        [sg.Text('Cookie 04'),sg.CBox('',default=True,key=23)],
-        [sg.Text('Cookie 07'),sg.CBox('',default=True,key=24)],
-        [sg.Text('Cookie 10'),sg.CBox('',default=True,key=25)],
-        [sg.Text('Cookie 13'),sg.CBox('',default=True,key=26)],
-        [sg.Text('Cookie 16'),sg.CBox('',default=True,key=27)],
-        [sg.Text('Cookie 19'),sg.CBox('',default=True,key=28)],]
+        [sg.Text('Cookie 01'),sg.Checkbox('',default=True,key=22)],
+        [sg.Text('Cookie 04'),sg.Checkbox('',default=True,key=23)],
+        [sg.Text('Cookie 07'),sg.Checkbox('',default=True,key=24)],
+        [sg.Text('Cookie 10'),sg.Checkbox('',default=True,key=25)],
+        [sg.Text('Cookie 13'),sg.Checkbox('',default=True,key=26)],
+        [sg.Text('Cookie 16'),sg.Checkbox('',default=True,key=27)],
+        [sg.Text('Cookie 19'),sg.Checkbox('',default=True,key=28)],]
 
     rosca_imb = [
-        [sg.Text('Rosca 01'),sg.CBox('',default=True,key=29)],
-        [sg.Text('Rosca 04'),sg.CBox('',default=True,key=30)],
-        [sg.Text('Rosca 07'),sg.CBox('',default=True,key=31)],
-        [sg.Text('Rosca 10'),sg.CBox('',default=True,key=32)],
-        [sg.Text('Rosca 13'),sg.CBox('',default=True,key=33)],
-        [sg.Text('Rosca 16'),sg.CBox('',default=True,key=34)],
-        [sg.Text('Rosca 19'),sg.CBox('',default=True,key=35)],]
+        [sg.Text('Rosca 01'),sg.Checkbox('',default=True,key=29)],
+        [sg.Text('Rosca 04'),sg.Checkbox('',default=True,key=30)],
+        [sg.Text('Rosca 07'),sg.Checkbox('',default=True,key=31)],
+        [sg.Text('Rosca 10'),sg.Checkbox('',default=True,key=32)],
+        [sg.Text('Rosca 13'),sg.Checkbox('',default=True,key=33)],
+        [sg.Text('Rosca 16'),sg.Checkbox('',default=True,key=34)],
+        [sg.Text('Rosca 19'),sg.Checkbox('',default=True,key=35)],]
 
     bolo_imb = [
-        [sg.Text('Bolo 01'),sg.CBox('',default=True,key=36)],
-        [sg.Text('Bolo 04'),sg.CBox('',default=True,key=37)],
-        [sg.Text('Bolo 07'),sg.CBox('',default=True,key=38)],
-        [sg.Text('Bolo 10'),sg.CBox('',default=True,key=39)],
-        [sg.Text('Bolo 13'),sg.CBox('',default=True,key=40)],]
+        [sg.Text('Bolo 01'),sg.Checkbox('',default=True,key=36)],
+        [sg.Text('Bolo 04'),sg.Checkbox('',default=True,key=37)],
+        [sg.Text('Bolo 07'),sg.Checkbox('',default=True,key=38)],
+        [sg.Text('Bolo 10'),sg.Checkbox('',default=True,key=39)],
+        [sg.Text('Bolo 13'),sg.Checkbox('',default=True,key=40)],]
 
     biscoito_fle = [
-        [sg.Text('Biscoito2  '),sg.CBox('',default=True,key=41)],
-        [sg.Text('Biscoito 5 '),sg.CBox('',default=True,key=42)],
-        [sg.Text('Biscoito 8 '),sg.CBox('',default=True,key=43)],
-        [sg.Text('Biscoito 11'),sg.CBox('',default=True,key=44)],
-        [sg.Text('Biscoito 14'),sg.CBox('',default=True,key=45)],
-        [sg.Text('Biscoito 17'),sg.CBox('',default=True,key=46)],
-        [sg.Text('Biscoito 20'),sg.CBox('',default=True,key=47)],]
+        [sg.Text('Biscoito2  '),sg.Checkbox('',default=True,key=41)],
+        [sg.Text('Biscoito 5 '),sg.Checkbox('',default=True,key=42)],
+        [sg.Text('Biscoito 8 '),sg.Checkbox('',default=True,key=43)],
+        [sg.Text('Biscoito 11'),sg.Checkbox('',default=True,key=44)],
+        [sg.Text('Biscoito 14'),sg.Checkbox('',default=True,key=45)],
+        [sg.Text('Biscoito 17'),sg.Checkbox('',default=True,key=46)],
+        [sg.Text('Biscoito 20'),sg.Checkbox('',default=True,key=47)],]
 
     bolacha_fle = [
-        [sg.Text('Bolacha 02'),sg.CBox('',default=True,key=48)],
-        [sg.Text('Bolacha 05'),sg.CBox('',default=True,key=49)],
-        [sg.Text('Bolacha 08'),sg.CBox('',default=True,key=50)],
-        [sg.Text('Bolacha 11'),sg.CBox('',default=True,key=51)],
-        [sg.Text('Bolacha 14'),sg.CBox('',default=True,key=52)],
-        [sg.Text('Bolacha 17'),sg.CBox('',default=True,key=53)],
-        [sg.Text('Bolacha 20'),sg.CBox('',default=True,key=54)],]
+        [sg.Text('Bolacha 02'),sg.Checkbox('',default=True,key=48)],
+        [sg.Text('Bolacha 05'),sg.Checkbox('',default=True,key=49)],
+        [sg.Text('Bolacha 08'),sg.Checkbox('',default=True,key=50)],
+        [sg.Text('Bolacha 11'),sg.Checkbox('',default=True,key=51)],
+        [sg.Text('Bolacha 14'),sg.Checkbox('',default=True,key=52)],
+        [sg.Text('Bolacha 17'),sg.Checkbox('',default=True,key=53)],
+        [sg.Text('Bolacha 20'),sg.Checkbox('',default=True,key=54)],]
 
     polvilho_fle = [
-        [sg.Text('Polvilho 02'),sg.CBox('',default=True,key=55)],
-        [sg.Text('Polvilho 05'),sg.CBox('',default=True,key=56)],
-        [sg.Text('Polvilho 08'),sg.CBox('',default=True,key=57)],
-        [sg.Text('Polvilho 11'),sg.CBox('',default=True,key=58)],
-        [sg.Text('Polvilho 14'),sg.CBox('',default=True,key=59)],
-        [sg.Text('Polvilho 17'),sg.CBox('',default=True,key=60)],
-        [sg.Text('Polvilho 20'),sg.CBox('',default=True,key=61)],]
+        [sg.Text('Polvilho 02'),sg.Checkbox('',default=True,key=55)],
+        [sg.Text('Polvilho 05'),sg.Checkbox('',default=True,key=56)],
+        [sg.Text('Polvilho 08'),sg.Checkbox('',default=True,key=57)],
+        [sg.Text('Polvilho 11'),sg.Checkbox('',default=True,key=58)],
+        [sg.Text('Polvilho 14'),sg.Checkbox('',default=True,key=59)],
+        [sg.Text('Polvilho 17'),sg.Checkbox('',default=True,key=60)],
+        [sg.Text('Polvilho 20'),sg.Checkbox('',default=True,key=61)],]
 
     cookie_fle = [
-        [sg.Text('Cookie 02'),sg.CBox('',default=True,key=62)],
-        [sg.Text('Cookie 05'),sg.CBox('',default=True,key=63)],
-        [sg.Text('Cookie 08'),sg.CBox('',default=True,key=64)],
-        [sg.Text('Cookie 11'),sg.CBox('',default=True,key=65)],
-        [sg.Text('Cookie 14'),sg.CBox('',default=True,key=66)],
-        [sg.Text('Cookie 17'),sg.CBox('',default=True,key=67)],
-        [sg.Text('Cookie 20'),sg.CBox('',default=True,key=68)],]
+        [sg.Text('Cookie 02'),sg.Checkbox('',default=True,key=62)],
+        [sg.Text('Cookie 05'),sg.Checkbox('',default=True,key=63)],
+        [sg.Text('Cookie 08'),sg.Checkbox('',default=True,key=64)],
+        [sg.Text('Cookie 11'),sg.Checkbox('',default=True,key=65)],
+        [sg.Text('Cookie 14'),sg.Checkbox('',default=True,key=66)],
+        [sg.Text('Cookie 17'),sg.Checkbox('',default=True,key=67)],
+        [sg.Text('Cookie 20'),sg.Checkbox('',default=True,key=68)],]
 
     rosca_fle = [
-        [sg.Text('Rosca 02'),sg.CBox('',default=True,key=69)],
-        [sg.Text('Rosca 05'),sg.CBox('',default=True,key=70)],
-        [sg.Text('Rosca 08'),sg.CBox('',default=True,key=71)],
-        [sg.Text('Rosca 11'),sg.CBox('',default=True,key=72)],
-        [sg.Text('Rosca 14'),sg.CBox('',default=True,key=73)],
-        [sg.Text('Rosca 17'),sg.CBox('',default=True,key=74)],
-        [sg.Text('Rosca 20'),sg.CBox('',default=True,key=75)],]
+        [sg.Text('Rosca 02'),sg.Checkbox('',default=True,key=69)],
+        [sg.Text('Rosca 05'),sg.Checkbox('',default=True,key=70)],
+        [sg.Text('Rosca 08'),sg.Checkbox('',default=True,key=71)],
+        [sg.Text('Rosca 11'),sg.Checkbox('',default=True,key=72)],
+        [sg.Text('Rosca 14'),sg.Checkbox('',default=True,key=73)],
+        [sg.Text('Rosca 17'),sg.Checkbox('',default=True,key=74)],
+        [sg.Text('Rosca 20'),sg.Checkbox('',default=True,key=75)],]
 
     bolo_fle = [
-        [sg.Text('Bolo 02'),sg.CBox('',default=True,key=76)],
-        [sg.Text('Bolo 05'),sg.CBox('',default=True,key=77)],
-        [sg.Text('Bolo 08'),sg.CBox('',default=True,key=78)],
-        [sg.Text('Bolo 11'),sg.CBox('',default=True,key=79)],
-        [sg.Text('Bolo 14'),sg.CBox('',default=True,key=80)],]
+        [sg.Text('Bolo 02'),sg.Checkbox('',default=True,key=76)],
+        [sg.Text('Bolo 05'),sg.Checkbox('',default=True,key=77)],
+        [sg.Text('Bolo 08'),sg.Checkbox('',default=True,key=78)],
+        [sg.Text('Bolo 11'),sg.Checkbox('',default=True,key=79)],
+        [sg.Text('Bolo 14'),sg.Checkbox('',default=True,key=80)],]
 
     biscoito_fer = [
-        [sg.Text('Biscoito3  '),sg.CBox('',default=True,key=81)],
-        [sg.Text('Biscoito 6 '),sg.CBox('',default=True,key=82)],
-        [sg.Text('Biscoito 9 '),sg.CBox('',default=True,key=83)],
-        [sg.Text('Biscoito 12'),sg.CBox('',default=True,key=84)],
-        [sg.Text('Biscoito 15'),sg.CBox('',default=True,key=85)],
-        [sg.Text('Biscoito 18'),sg.CBox('',default=True,key=86)],
-        [sg.Text('Biscoito 21'),sg.CBox('',default=True,key=87)],]
+        [sg.Text('Biscoito3  '),sg.Checkbox('',default=True,key=81)],
+        [sg.Text('Biscoito 6 '),sg.Checkbox('',default=True,key=82)],
+        [sg.Text('Biscoito 9 '),sg.Checkbox('',default=True,key=83)],
+        [sg.Text('Biscoito 12'),sg.Checkbox('',default=True,key=84)],
+        [sg.Text('Biscoito 15'),sg.Checkbox('',default=True,key=85)],
+        [sg.Text('Biscoito 18'),sg.Checkbox('',default=True,key=86)],
+        [sg.Text('Biscoito 21'),sg.Checkbox('',default=True,key=87)],]
 
     bolacha_fer = [
-        [sg.Text('Bolacha 03'),sg.CBox('',default=True,key=88)],
-        [sg.Text('Bolacha 06'),sg.CBox('',default=True,key=89)],
-        [sg.Text('Bolacha 09'),sg.CBox('',default=True,key=90)],
-        [sg.Text('Bolacha 12'),sg.CBox('',default=True,key=91)],
-        [sg.Text('Bolacha 15'),sg.CBox('',default=True,key=92)],
-        [sg.Text('Bolacha 18'),sg.CBox('',default=True,key=93)],
-        [sg.Text('Bolacha 21'),sg.CBox('',default=True,key=94)],]
+        [sg.Text('Bolacha 03'),sg.Checkbox('',default=True,key=88)],
+        [sg.Text('Bolacha 06'),sg.Checkbox('',default=True,key=89)],
+        [sg.Text('Bolacha 09'),sg.Checkbox('',default=True,key=90)],
+        [sg.Text('Bolacha 12'),sg.Checkbox('',default=True,key=91)],
+        [sg.Text('Bolacha 15'),sg.Checkbox('',default=True,key=92)],
+        [sg.Text('Bolacha 18'),sg.Checkbox('',default=True,key=93)],
+        [sg.Text('Bolacha 21'),sg.Checkbox('',default=True,key=94)],]
 
     polvilho_fer = [
-        [sg.Text('Polvilho 03'),sg.CBox('',default=True,key=95)],
-        [sg.Text('Polvilho 06'),sg.CBox('',default=True,key=96)],
-        [sg.Text('Polvilho 09'),sg.CBox('',default=True,key=97)],
-        [sg.Text('Polvilho 12'),sg.CBox('',default=True,key=98)],
-        [sg.Text('Polvilho 15'),sg.CBox('',default=True,key=99)],
-        [sg.Text('Polvilho 18'),sg.CBox('',default=True,key=100)],
-        [sg.Text('Polvilho 21'),sg.CBox('',default=True,key=101)],]
+        [sg.Text('Polvilho 03'),sg.Checkbox('',default=True,key=95)],
+        [sg.Text('Polvilho 06'),sg.Checkbox('',default=True,key=96)],
+        [sg.Text('Polvilho 09'),sg.Checkbox('',default=True,key=97)],
+        [sg.Text('Polvilho 12'),sg.Checkbox('',default=True,key=98)],
+        [sg.Text('Polvilho 15'),sg.Checkbox('',default=True,key=99)],
+        [sg.Text('Polvilho 18'),sg.Checkbox('',default=True,key=100)],
+        [sg.Text('Polvilho 21'),sg.Checkbox('',default=True,key=101)],]
 
     cookie_fer = [
-        [sg.Text('Cookie 03'),sg.CBox('',default=True,key=102)],
-        [sg.Text('Cookie 06'),sg.CBox('',default=True,key=103)],
-        [sg.Text('Cookie 09'),sg.CBox('',default=True,key=104)],
-        [sg.Text('Cookie 12'),sg.CBox('',default=True,key=105)],
-        [sg.Text('Cookie 15'),sg.CBox('',default=True,key=106)],
-        [sg.Text('Cookie 18'),sg.CBox('',default=True,key=107)],
-        [sg.Text('Cookie 21'),sg.CBox('',default=True,key=108)],]
+        [sg.Text('Cookie 03'),sg.Checkbox('',default=True,key=102)],
+        [sg.Text('Cookie 06'),sg.Checkbox('',default=True,key=103)],
+        [sg.Text('Cookie 09'),sg.Checkbox('',default=True,key=104)],
+        [sg.Text('Cookie 12'),sg.Checkbox('',default=True,key=105)],
+        [sg.Text('Cookie 15'),sg.Checkbox('',default=True,key=106)],
+        [sg.Text('Cookie 18'),sg.Checkbox('',default=True,key=107)],
+        [sg.Text('Cookie 21'),sg.Checkbox('',default=True,key=108)],]
 
     rosca_fer = [
-        [sg.Text('Rosca 03'),sg.CBox('',default=True,key=109)],
-        [sg.Text('Rosca 06'),sg.CBox('',default=True,key=110)],
-        [sg.Text('Rosca 09'),sg.CBox('',default=True,key=111)],
-        [sg.Text('Rosca 12'),sg.CBox('',default=True,key=112)],
-        [sg.Text('Rosca 15'),sg.CBox('',default=True,key=113)],
-        [sg.Text('Rosca 18'),sg.CBox('',default=True,key=114)],
-        [sg.Text('Rosca 21'),sg.CBox('',default=True,key=115)],]
+        [sg.Text('Rosca 03'),sg.Checkbox('',default=True,key=109)],
+        [sg.Text('Rosca 06'),sg.Checkbox('',default=True,key=110)],
+        [sg.Text('Rosca 09'),sg.Checkbox('',default=True,key=111)],
+        [sg.Text('Rosca 12'),sg.Checkbox('',default=True,key=112)],
+        [sg.Text('Rosca 15'),sg.Checkbox('',default=True,key=113)],
+        [sg.Text('Rosca 18'),sg.Checkbox('',default=True,key=114)],
+        [sg.Text('Rosca 21'),sg.Checkbox('',default=True,key=115)],]
 
     bolo_fer = [
-        [sg.Text('Bolo 03'),sg.CBox('',default=True,key=116)],
-        [sg.Text('Bolo 06'),sg.CBox('',default=True,key=117)],
-        [sg.Text('Bolo 09'),sg.CBox('',default=True,key=118)],
-        [sg.Text('Bolo 12'),sg.CBox('',default=True,key=119)],
-        [sg.Text('Bolo 15'),sg.CBox('',default=True,key=120)],]
+        [sg.Text('Bolo 03'),sg.Checkbox('',default=True,key=116)],
+        [sg.Text('Bolo 06'),sg.Checkbox('',default=True,key=117)],
+        [sg.Text('Bolo 09'),sg.Checkbox('',default=True,key=118)],
+        [sg.Text('Bolo 12'),sg.Checkbox('',default=True,key=119)],
+        [sg.Text('Bolo 15'),sg.Checkbox('',default=True,key=120)],]
 
     layout= [
         #here i use column to separate the 3 tipes of labour
-        [sg.Button('Start') ,sg.Button('Toggle IMBUIDOR'), sg.Button('Toggle FLECHEIRO'), sg.Button('Toggle FERREIRO')],
+        [sg.Button('Start',) ,sg.Button('Toggle IMBUIDOR'), sg.Button('Toggle FLECHEIRO'), sg.Button('Toggle FERREIRO')],
         [sg.Text('========================================IMBUIDOR========================================')],
+        [sg.Text(' '),sg.Button('Toggle',key='biscoito_imb'),sg.Text('            '),sg.Button('Toggle',key = 'bolacha_imb'),sg.Text('             '), sg.Button('Toggle',key = 'polvilho_imb'),sg.Text('           '),sg.Button('Toggle',key = 'cookie_imb'),sg.Text('        '),sg.Button('Toggle',key = 'rosca_imb'),sg.Text('          '),sg.Button('Toggle',key = 'bolo_imb')],
         [sg.Column(biscoito_imb),sg.Column(bolacha_imb),sg.Column(polvilho_imb),sg.Column(cookie_imb),sg.Column(rosca_imb),sg.Column(bolo_imb)],
         [sg.Text('========================================FLECHEIRO=======================================')],
+        [sg.Text(' '),sg.Button('Toggle',key='biscoito_fle'),sg.Text('            '),sg.Button('Toggle',key = 'bolacha_fle'),sg.Text('             '), sg.Button('Toggle',key = 'polvilho_fle'),sg.Text('           '),sg.Button('Toggle',key = 'cookie_fle'),sg.Text('        '),sg.Button('Toggle',key = 'rosca_fle'),sg.Text('          '),sg.Button('Toggle',key = 'bolo_fle')],
         [sg.Column(biscoito_fle, key=('imbuidor')),sg.Column(bolacha_fle),sg.Column(polvilho_fle),sg.Column(cookie_fle),sg.Column(rosca_fle),sg.Column(bolo_fle)],
         [sg.Text('========================================FERREIRO========================================')],
+        [sg.Text(' '),sg.Button('Toggle',key='biscoito_fer'),sg.Text('            '),sg.Button('Toggle',key = 'bolacha_fer'),sg.Text('             '), sg.Button('Toggle',key = 'polvilho_fer'),sg.Text('           '),sg.Button('Toggle',key = 'cookie_fer'),sg.Text('        '),sg.Button('Toggle',key = 'rosca_fer'),sg.Text('          '),sg.Button('Toggle',key = 'bolo_fer')],
         [sg.Column(biscoito_fer),sg.Column(bolacha_fer),sg.Column(polvilho_fer),sg.Column(cookie_fer),sg.Column(rosca_fer),sg.Column(bolo_fer)]]
 
     window = sg.Window("Labour Manager", layout)
-    x=0
-    y=1
-    a=0
-    b=1
-    k=0
-    q=1
+
     while (True):#The loop that update your window
    
         event, numero_ilha = window.read()
@@ -447,20 +192,132 @@ class GUI:
         if event in ('Start', sg.WIN_CLOSED):
             break
         if event in ('Toggle IMBUIDOR'):
-            toggle_imb(window,x)
-            x = x + y#this is a way to change 2 variables without use a trird one
-            y = x - y
-            x = x - y
+            for t in range(1,41):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
         if event in ('Toggle FLECHEIRO'):
-            toggle_fle(window,a)
-            a = a + b
-            b = a - b
-            a = a - b
+            for t in range(41,81):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
         if event in ('Toggle FERREIRO'):
-            toggle_fer(window,k)
-            k = k + q
-            q = k - q
-            k = k - q
+            for t in range(81,121):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('biscoito_imb'):
+            for t in range(1,8):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('bolacha_imb'):
+            for t in range(8,15):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('polvilho_imb'):
+            for t in range(15,22):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('cookie_imb'):
+            for t in range(22,29):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('rosca_imb'):
+            for t in range(29,36):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('bolo_imb'):
+            for t in range(36,41):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('biscoito_fle'):
+            for t in range(41,48):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('bolacha_fle'):
+            for t in range(48,55):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('polvilho_fle'):
+            for t in range(55,62):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('cookie_fle'):
+            for t in range(62,69):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('rosca_fle'):
+            for t in range(69,76):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('bolo_fle'):
+            for t in range(76,81):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('biscoito_fer'):
+            for t in range(81,88):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('bolacha_fer'):
+            for t in range(88,95):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('polvilho_fer'):
+            for t in range(95,102):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('cookie_fer'):
+            for t in range(102,109):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('rosca_fer'):
+            for t in range(109,116):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        if event in ('bolo_fer'):
+            for t in range(116,121):
+                if numero_ilha[t] == True:
+                    window[t].Update(value = False)
+                else:
+                    window[t].Update(value = True)
+        
                 
     window.close()#Close the window
 
@@ -1226,7 +1083,6 @@ def guardar_itens(x):
                 break
         elif (pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\banco.png') != None):
             pyautogui.press('esc')
-            print('guardar itens')
             time.sleep(1)
             click(1098, 370, False)
             time.sleep(1)
