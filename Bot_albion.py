@@ -9,6 +9,7 @@ from pynput.keyboard import Key, Controller
 from tkinter import Event
 import PySimpleGUI as sg
 from PySimpleGUI.PySimpleGUI import B, Checkbox, Check
+import os
 
 
 
@@ -371,11 +372,22 @@ def volta_trabalhador():#walk from the end of the island till the Travel Planer
             deu_merda()
             return True
             
-        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Topo_viajador.png', confidence = 0.5) != None :
-            click(60, 1079, True)
-            time.sleep(1.5)
-            click(1082, 264, False)
-            break
+        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador_noite.png', confidence = 0.5) != None :
+            a = pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5)
+            b = pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador_noite.png', confidence = 0.5)
+            if (a==None):
+                if (b==None):
+                    click(60, 1079, True)
+                    time.sleep(1.5)
+                    click(1082, 264, False)
+                    break
+                else:
+                    pyautogui.click(b)
+                    break
+            else:
+                pyautogui.click(a)
+                break      
+
         if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png', confidence = 0.8) != None:
             deu_merda()
             return True
@@ -926,15 +938,11 @@ def viaja_prox(numero_ilha):#type the name of the island u want to travel
         if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Roda_dos_ventos.png', confidence=0.8) != None:
             return
         if (timed_out==40):
-            print(2)
             pyautogui.press('esc')
-            print(3)
             time.sleep(0.3)
             click(995, 256,False)
-            print(4)
             time.sleep(1)
             viaja_prox(numero_ilha)
-            print(5)
             return
         else:
             time.sleep(0.1)
@@ -965,20 +973,23 @@ def logout():#try to log back in game
 def deu_merda():#if anything go out of the normal this funcion is the responsible to help
     
     timed_out=0
+    timed_out_2=0
     while(True):
-        if locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png', confidence = 0.9) != None:
+        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png', confidence = 0.9) != None:
             logout() 
 
-        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Topo_viajador.png', confidence = 0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Topo_viajador_noite.png', confidence = 0.5) != None :
+        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Desmontado.png', confidence = 0.9) != None:
+            pyautogui.press('s')
+            time.sleep(0.3)
+            pyautogui.press('a')
+            time.sleep(5)
+
+        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador_noite.png', confidence = 0.5) != None :
             a=pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.6)
-            b=pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Topo_viajador.png', confidence = 0.6)
-            c=pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Topo_viajador_noite.png', confidence = 0.6)
+            b=pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador_noite.png', confidence = 0.6)
             if (a == None): 
                 if (b == None):
-                    if (c == None):
-                        click(1049, 253, False)
-                    else:
-                        pyautogui.click(c)
+                    click(1049, 253, False)
                 else:
                     pyautogui.click(b)
             else:
@@ -990,6 +1001,12 @@ def deu_merda():#if anything go out of the normal this funcion is the responsibl
                 time.sleep(0.2)
                 click(1014, 246, False)
                 return
+            else:
+                timed_out_2+=1
+                time.sleep(1)
+                if(timed_out_2==20):
+                    deu_merda()
+
         else:          
             click(32, 1079, True)
             time.sleep(1)
@@ -1129,6 +1146,11 @@ def pegar_diario(diario):
         deu_merda()
         return pegou
 
+def tempo_ilhas(t_comeco,t_fim,x):
+    gasto = t_fim - t_comeco
+    with open("tempo_ilha.txt", "a") as text_file:
+        text_file.write("ilha: %d tempo: %f \n" %(x, gasto))
+
 for x,y in GUI.numero_ilha.items():# here is where the magic happens
     if(y):
         if (x==1):
@@ -1136,6 +1158,8 @@ for x,y in GUI.numero_ilha.items():# here is where the magic happens
             guardar_itens(x) 
             pegar_diario(x)
         if (x == 21):
+            t_fim = time.time()
+            tempo_ilhas(t_comeco,t_fim,x)
             viaja_prox(-1)
             guardar_itens(x)
             pegar_diario(x)
@@ -1158,8 +1182,11 @@ for x,y in GUI.numero_ilha.items():# here is where the magic happens
 
     if(y==False):
         continue
-
+    if(x != 1 and 21 and 41 and 61 and 81 and 101):
+        t_fim = time.time()
+        tempo_ilhas(t_comeco,t_fim,x)
     viaja_prox(x)
+    t_comeco = time.time()
     error_vai = vai_trabalhador()
     error_faz = faz_trabalhador()
 
