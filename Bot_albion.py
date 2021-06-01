@@ -372,9 +372,9 @@ def volta_trabalhador():#walk from the end of the island till the Travel Planer
             deu_merda()
             return True
             
-        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador_noite.png', confidence = 0.5) != None :
-            a = pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5)
-            b = pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador_noite.png', confidence = 0.5)
+        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.6) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador_noite.png', confidence = 0.6) != None :
+            a = pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.6)
+            b = pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador_noite.png', confidence = 0.6)
             if (a==None):
                 if (b==None):
                     click(60, 1079, True)
@@ -1123,21 +1123,27 @@ def pegar_diario(diario):
     time.sleep(0.3)
     if(diario==1):
         click_arrasta(89,345,1590,551)
+        time.sleep(0.5)
         pegou = True
     if(diario==21):
         click_arrasta(91,434,1590,551)
+        time.sleep(0.5)
         pegou = True
     if(diario==41):
         click_arrasta(173,351,1590,551)
+        time.sleep(0.5)
         pegou = True
     if(diario==61):
         click_arrasta(173,431,1590,551)
+        time.sleep(0.5)
         pegou = True
     if(diario==81):
         click_arrasta(254,351,1590,551)
+        time.sleep(0.5)
         pegou = True
     if(diario==101):
         click_arrasta(257,428,1590,551)
+        time.sleep(0.5)
         pegou = True
     if (pegou==True):
         volta_trabalhador()
@@ -1149,44 +1155,55 @@ def pegar_diario(diario):
 def tempo_ilhas(t_comeco,t_fim,x):
     gasto = t_fim - t_comeco
     with open("tempo_ilha.txt", "a") as text_file:
-        text_file.write("ilha: %d tempo: %f \n" %(x, gasto))
+        text_file.write("ilha: %d tempo: %f \n" %(x-1, gasto))
 
+ft=True
 for x,y in GUI.numero_ilha.items():# here is where the magic happens
     if(y):
         if (x==1):
+            os.remove("tempo_ilha.txt")
             viaja_prox(-1)
             guardar_itens(x) 
             pegar_diario(x)
-        if (x == 21):
+        if (x == 21 and ft==False):
             t_fim = time.time()
             tempo_ilhas(t_comeco,t_fim,x)
             viaja_prox(-1)
             guardar_itens(x)
             pegar_diario(x)
-        if (x == 41):
+        if (x == 41 and ft==False):
+            t_fim = time.time()
+            tempo_ilhas(t_comeco,t_fim,x)
             viaja_prox(-1)
             guardar_itens(x)
             pegar_diario(x)
-        if (x == 61):
+        if (x == 61 and ft==False):
+            t_fim = time.time()
+            tempo_ilhas(t_comeco,t_fim,x)
             viaja_prox(-1)
             guardar_itens(x)
             pegar_diario(x)
-        if (x == 81):
+        if (x == 81 and ft==False):
+            t_fim = time.time()
+            tempo_ilhas(t_comeco,t_fim,x)
             viaja_prox(-1)
             guardar_itens(x)
             pegar_diario(x)
-        if (x == 101):
+        if (x == 101 and ft==False):
+            t_fim = time.time()
+            tempo_ilhas(t_comeco,t_fim,x)
             viaja_prox(-1)
             guardar_itens(x)
             pegar_diario(x)
 
     if(y==False):
         continue
-    if(x != 1 and 21 and 41 and 61 and 81 and 101):
+    if(x != 1 and 21 and 41 and 61 and 81 and 101 and ft==False):
         t_fim = time.time()
         tempo_ilhas(t_comeco,t_fim,x)
     viaja_prox(x)
     t_comeco = time.time()
+    ft=False
     error_vai = vai_trabalhador()
     error_faz = faz_trabalhador()
 
