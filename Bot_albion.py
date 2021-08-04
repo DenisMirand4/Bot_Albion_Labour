@@ -1,3 +1,4 @@
+import tkinter
 from tkinter.constants import S
 from pyautogui import *
 import pyautogui
@@ -10,8 +11,6 @@ from tkinter import Event
 import PySimpleGUI as sg
 from PySimpleGUI.PySimpleGUI import B, Checkbox, Check
 import os
-
-
 
 class GUI:
 
@@ -373,6 +372,8 @@ def volta_trabalhador():#walk from the end of the island till the Travel Planer
             return True
             
         if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.6) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador_noite.png', confidence = 0.6) != None :
+            click(60, 1079, True)
+            time.sleep(1)
             a = pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.6)
             b = pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador_noite.png', confidence = 0.6)
             if (a==None):
@@ -558,9 +559,14 @@ def viaja_prox(numero_ilha):#type the name of the island u want to travel
             break
         if((timed_out==30)  and (pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viagem_indisponivel.png', confidence=0.8) != None)):
             pyautogui.press('esc')
-            print('esta no primeiro')
             time.sleep(2)
             click(995, 256,False)
+        if(timed_out==5):
+            click(1009, 500, True)
+            time.sleep(1)
+            volta_trabalhador()
+        if(timed_out==50):
+            deu_merda()
         else:
             time.sleep(0.1)
 
@@ -944,6 +950,8 @@ def viaja_prox(numero_ilha):#type the name of the island u want to travel
             time.sleep(1)
             viaja_prox(numero_ilha)
             return
+        if (timed_out==60):
+            deu_merda()
         else:
             time.sleep(0.1)
             
@@ -984,7 +992,7 @@ def deu_merda():#if anything go out of the normal this funcion is the responsibl
             pyautogui.press('a')
             time.sleep(5)
 
-        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.5) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador_noite.png', confidence = 0.5) != None :
+        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.6) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador_noite.png', confidence = 0.6) != None :
             a=pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador.png', confidence = 0.6)
             b=pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Viajador_noite.png', confidence = 0.6)
             if (a == None): 
@@ -1004,7 +1012,7 @@ def deu_merda():#if anything go out of the normal this funcion is the responsibl
             else:
                 timed_out_2+=1
                 time.sleep(1)
-                if(timed_out_2==20):
+                if(timed_out_2==3):
                     deu_merda()
 
         else:          
@@ -1122,45 +1130,64 @@ def pegar_diario(diario):
     qual_bau(1)
     time.sleep(0.3)
     if(diario==1):
+        time.sleep(1)
         click_arrasta(89,345,1590,551)
         time.sleep(0.5)
         pegou = True
     if(diario==21):
+        time.sleep(1)
         click_arrasta(91,434,1590,551)
         time.sleep(0.5)
         pegou = True
     if(diario==41):
+        time.sleep(1)
         click_arrasta(173,351,1590,551)
         time.sleep(0.5)
         pegou = True
     if(diario==61):
+        time.sleep(1)
         click_arrasta(173,431,1590,551)
         time.sleep(0.5)
         pegou = True
     if(diario==81):
+        time.sleep(1)
         click_arrasta(254,351,1590,551)
         time.sleep(0.5)
         pegou = True
     if(diario==101):
+        time.sleep(1)
         click_arrasta(257,428,1590,551)
         time.sleep(0.5)
         pegou = True
     if (pegou==True):
         volta_trabalhador()
-        return pegou
+        time.sleep(0.4)
+        pyautogui.press('i')
+        time.sleep(0.3)
+        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\imbuidor.png', confidence = 0.7) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\flecheiro.png', confidence = 0.7) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\ferreiro.png', confidence = 0.7) or pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\ferreiro_t7.png', confidence = 0.7) !=None:
+            return pegou
+        else:
+            pyautogui.press('i')
+            click(60, 1079, True)
+            time.sleep(1)
+            click(1778, 1, False)
+            time.sleep(5)
+            pegar_diario(diario)
+
     if (pegou==False):
         deu_merda()
         return pegou
 
 def tempo_ilhas(t_comeco,t_fim,x):
     gasto = t_fim - t_comeco
+    hora_atual=time.localtime()
     with open("tempo_ilha.txt", "a") as text_file:
-        text_file.write("ilha: %d tempo: %f \n" %(x-1, gasto))
-
+        text_file.write("ilha: %d tempo: %.2f hora: %d:%d:%d \n" %(x-1, gasto, hora_atual.tm_hour, hora_atual.tm_min, hora_atual.tm_sec))
 ft=True
 for x,y in GUI.numero_ilha.items():# here is where the magic happens
     if(y):
         if (x==1):
+            open("tempo_ilha.txt", "a")
             os.remove("tempo_ilha.txt")
             viaja_prox(-1)
             guardar_itens(x) 
@@ -1217,7 +1244,10 @@ for x,y in GUI.numero_ilha.items():# here is where the magic happens
     time.sleep(1)
 
     if (x == 120):
+        tempo_ilhas(t_comeco,t_fim,x)
         viaja_prox(-1)
         guardar_itens(x)
         print('Ilhas Finalizadas')
+        os.system('shutdown -s')
         break
+    
