@@ -528,7 +528,11 @@ def coloca_diario():#make the task of colect and give the journal to the labour
             return True
         if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Deixar Diario.png', confidence=0.8) != None:
             click_arrasta(1585, 548, 207, 659)#put the journal in the labour
-            break
+            time.sleep(0.3)
+            if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Aceitar.png', confidence=0.8) != None:
+                break
+            else:
+                click_arrasta(1585, 548, 207, 659)
         else:
             time.sleep(0.1)
             timed_out+=1
@@ -540,8 +544,12 @@ def coloca_diario():#make the task of colect and give the journal to the labour
             return True   
         if  pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Aceitar.png', confidence=0.8) != None:
             click(121, 866, False)#after the journal is put in the labour this funcion click to confirm the journal and start the work
-            time.sleep(0.1)
-            return False
+            time.sleep(0.3)
+            if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Roda_dos_ventos.png', confidence=0.8) != None:
+                return False
+            else:
+                click(121, 866, False)
+
         else:
             time.sleep(0.1)
             timed_out+=1
@@ -1236,6 +1244,7 @@ for x,y in GUI.numero_ilha.items():# here is where the magic happens
 
     while(error_vai or error_faz):#in case of any error, like low internet conection
         viaja_prox(x)
+        time.sleep(2)
         error_vai = vai_trabalhador()
         error_faz = faz_trabalhador()
     
