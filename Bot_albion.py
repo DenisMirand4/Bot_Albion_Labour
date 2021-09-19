@@ -530,7 +530,7 @@ def coloca_diario():#make the task of colect and give the journal to the labour
             click_arrasta(1585, 548, 207, 659)#put the journal in the labour
             time.sleep(0.3)
             if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\Aceitar.png', confidence=0.8) != None:
-                break
+                break   
             else:
                 click_arrasta(1585, 548, 207, 659)
         else:
@@ -991,6 +991,9 @@ def deu_merda():#if anything go out of the normal this funcion is the responsibl
     timed_out=0
     timed_out_2=0
     while(True):
+        if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\reconnecting.png', confidence = 0.9) != None:
+            click(961, 603, False)
+            time.sleep(0.5)
         if pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\logout.png', confidence = 0.9) != None:
             logout() 
 
@@ -1096,6 +1099,7 @@ def guardar_itens(x):
             time.sleep(0.1)
     timed_out=0
     while(True): 
+        time.sleep(2)
         if (pyautogui.locateOnScreen('C:\\Users\\denis\\Desktop\\Bot albion\\Imagens\\inventario.png', confidence = 0.8) != None):
             if (x != 1):
                 time.sleep(0.3)
